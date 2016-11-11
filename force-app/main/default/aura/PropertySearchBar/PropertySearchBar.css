@@ -1,0 +1,47 @@
+.THIS {
+	margin:12px 0;
+    width: 100%;
+}
+
+.THIS>div {
+    width: 400px;
+    margin: 0 auto;
+}
+
+/*
+.THIS {
+    text-align: center;
+    padding: 12px;
+}
+
+.THIS .wrapper {
+    display: inline-block;
+    position: relative;
+}
+
+.THIS input[type=text] {
+	font-size: 1rem;
+    -webkit-appearance: none;
+	box-shadow: none;
+    padding: 8px;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    width: 400px;
+}
+.THIS button:focus,
+.THIS input:focus {
+    outline:none;
+}
+
+.THIS button {
+    -webkit-appearance: none;
+    background: #FFFFFF;
+    border: none;
+    position: absolute;
+    right: 5px;
+    top: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #AAAAAA;
+}
+*/

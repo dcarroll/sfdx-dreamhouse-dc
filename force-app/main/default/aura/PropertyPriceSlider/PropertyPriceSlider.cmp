@@ -1,0 +1,13 @@
+<aura:component >
+	
+	<ltng:require styles="/resource/nouislider/nouislider.min.css" 
+                  scripts="/resource/nouislider/nouislider.min.js"
+				  afterScriptsLoaded="{!c.doInit}"/>
+    
+    <aura:registerEvent name="propertyPriceSelectionChange" type="c:PropertyPriceSelectionChange"/>
+    
+    <div>
+		<div aura:id="slider"></div>
+    </div>
+
+</aura:component>

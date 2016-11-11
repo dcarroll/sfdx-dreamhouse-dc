@@ -1,0 +1,63 @@
+<aura:component >
+
+<div class="slds-page-header">
+  <div class="slds-grid">
+    <div class="slds-col slds-has-flexi-truncate">
+      <p class="slds-text-heading--label">Properties</p>
+      <div class="slds-grid">
+        <div class="slds-grid slds-type-focus slds-no-space">
+          <h1 class="slds-text-heading--medium slds-truncate" title="My Leads (truncates)">Property Explorer</h1>
+          <button class="slds-button slds-button--icon-bare slds-shrink-none slds-align-middle slds-m-left--x-small">
+  	        <c:svg class="slds-button__icon" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#down" />
+            <span class="slds-assistive-text">View More</span>
+          </button>
+        </div>
+        <button class="slds-button slds-button--icon-more slds-shrink-none slds-m-left--large" aria-haspopup="true">
+          <c:svg class="slds-button__icon" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#settings" />
+          <span class="slds-assistive-text">Settings</span>
+          <c:svg class="slds-button__icon slds-button__icon--x-small" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#down" />
+        </button>
+        <button class="slds-button slds-button--brand slds-button-space-left slds-m-right--medium slds-shrink-none slds-align-middle slds-hide" aria-hidden="true">Save</button>
+      </div>
+    </div>
+    <div class="slds-col slds-no-flex slds-align-bottom">
+      <div class="slds-grid">
+        <div class="slds-button-space-left">
+          <button class="slds-button slds-button--icon-more" aria-haspopup="true">
+	        <c:svg class="slds-button__icon" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#table" />
+            <span class="slds-assistive-text">Table</span>
+	        <c:svg class="slds-button__icon slds-button__icon--x-small" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#down" />
+          </button>
+        </div>
+        <div class="slds-button-group slds-button-space-left" role="group">
+          <button class="slds-button slds-button--icon-border">
+  	        <c:svg class="slds-button__icon" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#chart" />
+            <span class="slds-assistive-text">Chart</span>
+          </button>
+          <button class="slds-button slds-button--icon-border">
+  	        <c:svg class="slds-button__icon" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#filterList" />
+            <span class="slds-assistive-text">Filter List</span>
+          </button>
+          <button class="slds-button slds-button--icon-more">
+  	        <c:svg class="slds-button__icon" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#sort" />
+            <span class="slds-assistive-text">Sort</span>
+	        <c:svg class="slds-button__icon slds-button__icon--x-small" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#down" />
+            <span class="slds-assistive-text">More</span>
+          </button>
+        </div>
+        <div class="slds-button-group" role="group">
+          <button class="slds-button slds-button--neutral">New Property</button>
+          <div class="slds-button--last">
+            <button class="slds-button slds-button--icon-border-filled">
+              <c:svg class="slds-button__icon" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#down" />
+              <span class="slds-assistive-text">More Actions</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="slds-text-body--small slds-m-top--x-small">n properties • Sorted by Name</p>
+</div>
+    
+</aura:component>

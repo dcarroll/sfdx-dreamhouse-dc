@@ -1,0 +1,11 @@
+{
+  "Company": "Demo Company",
+  "Country": "US",
+  "LastName": "Demo",
+  "Email": "wade.wegner@salesforce.com",
+  "Edition": "Enterprise",
+  "OrgPreferences" : {
+     "S1DesktopEnabled" : true,
+     "ChatterEnabled" : false
+  }
+}

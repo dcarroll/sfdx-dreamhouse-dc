@@ -1,0 +1,17 @@
+.THIS {
+    padding: 0 12px;
+}
+
+.THIS .list {
+    margin: 0 auto;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    /*
+    -webkit-justify-content: center;
+    justify-content: center;
+    */
+}

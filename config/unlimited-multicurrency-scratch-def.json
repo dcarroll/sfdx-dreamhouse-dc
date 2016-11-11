@@ -1,0 +1,12 @@
+{
+  "Company": "Demo Company",
+  "Country": "US",
+  "LastName": "Wegner",
+  "Email": "wade.wegner@salesforce.com",
+  "Edition": "Unlimited",
+  "Features": "Multicurrency",
+  "OrgPreferences" : {
+     "ChatterEnabled" : false,
+     "IsOrdersEnabled" : true
+  }
+}

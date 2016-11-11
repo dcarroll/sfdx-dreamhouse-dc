@@ -1,0 +1,26 @@
+<aura:component controller="PropertyController">
+	
+    <aura:attribute name="properties" type="Property__c[]"/>
+    <aura:attribute name="page" type="integer"/>
+    <aura:attribute name="pages" type="integer"/>
+    <aura:attribute name="total" type="integer"/>
+
+    <aura:attribute name="searchKey" type="String" default=""/>
+    <aura:attribute name="minPrice" type="integer" default="0"/>
+    <aura:attribute name="maxPrice" type="integer" default="10000000"/>
+    
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler event="c:PropertyPageChange" action="{!c.pageChange}"/>
+    <aura:handler event="c:PropertySearchKeyChange" action="{!c.searchKeyChange}"/>
+    <aura:handler event="c:PropertyPriceSelectionChange" action="{!c.priceSelectionChange}"/>
+    
+	<div>
+        <div class="list">
+            <aura:iteration items="{!v.properties}" var="property">
+                <c:PropertyListItem property="{!property}"/>
+            </aura:iteration>
+        </div>
+  	    <c:PropertyPaginator page="{!v.page}" pages="{!v.pages}" total="{!v.total}"/>
+    </div>
+    
+</aura:component>

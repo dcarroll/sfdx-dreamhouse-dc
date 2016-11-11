@@ -1,0 +1,269 @@
+<apex:page standardController="Property__c" applyBodyTag="false" applyHtmlTag="false" standardStylesheets="false" showHeader="false">
+    
+    <html style="overflow:visible !important;padding:0;margin:0;">
+        <head>
+            <meta name="viewport" content="height=800, initial-scale=1"/>
+            <link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.SLDS100,'assets/styles/salesforce-lightning-design-system-ltng.css')}"/>
+            <link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.SmartHomeVFP_styles)}"/>
+        </head>
+
+        <body style="padding:0;margin:0;text-align:center;">
+            
+            <div class="slds">
+            
+                <img src="{!URLFOR($Resource.smarthome,'logo.svg')}" style="height: 100px"/>
+                
+                <div style="margin-top:8px;font-size:1.1rem;font-weight:bold">{!property__c.address__c}, {!property__c.city__c} {!property__c.state__c}</div>
+                
+                <div id="tabMenu" class="tab">
+	                <div class="slds-grid slds-grid--align-center" style="margin-top:20px">
+                        <div class="slds-col--padded">
+                            <a href="#" id="btnTemp">
+                                <img src="{!URLFOR($Resource.smarthome,'temp.svg')}" style="width:80px"/>
+                            </a>
+                        </div>    
+                        <div class="slds-col--padded">
+                            <a href="#" id="btnLights">
+                                <img src="{!URLFOR($Resource.smarthome,'bulb.svg')}" style="width:80px"/>
+                            </a>    
+                        </div>
+                    </div>
+	                <div class="slds-grid slds-grid--align-center" style="margin-top:20px">
+                        <div class="slds-col--padded">
+                            <a href="#" id="btnLock">
+                                <img src="{!URLFOR($Resource.smarthome,'lock.svg')}" style="width:80px"/>
+                            </a>
+                        </div>    
+                        <div class="slds-col--padded">
+                            <img src="{!URLFOR($Resource.smarthome,'garage.svg')}" style="width:80px"/>
+                        </div>
+                    </div>
+	                <div class="slds-grid slds-grid--align-center" style="margin-top:20px">
+                        <div class="slds-col--padded">
+                            <img src="{!URLFOR($Resource.smarthome,'camera.svg')}" style="width:80px"/>
+                        </div>    
+                        <div class="slds-col--padded">
+                            <img src="{!URLFOR($Resource.smarthome,'house.svg')}" style="width:80px"/>
+                        </div>    
+                    </div>
+                </div>    
+    
+                <div id="tabTemp" class="tab hidden">
+                    <div id="actualTemp" style="font-size:104px;font-weight:300">66°</div>
+                    <div id="desiredTemp" style="font-size:36px;font-weight:300">66°</div>
+                    <div style="margin: 4px 0 30px 0"><input id="tempSlider" min='50' max='90' type='range' value='65' style="width:250px"/></div>
+                    <button class="slds-button slds-button--neutral" onclick="closeTab(tabTemp)">Set</button>
+                </div>
+                
+                <div id="tabLights" class="tab hidden">
+                    <div class="slds-grid slds-grid--align-center padding" style="margin:20px 0">
+                    	<div id="lightSliders" style="text-align:right"/>
+                    </div>
+                    <button class="slds-button slds-button--neutral" onclick="closeTab(tabLights)">Done</button>
+                </div>
+                
+                <div id="tabLock" class="panel hidden">
+					<div class="slds-grid slds-grid--align-center" style="margin-top:20px">
+                        <div class="slds-col--padded">
+                            <a href="#" id="btnLockDoor">
+                                <img id="lockDoorImg" src="{!URLFOR($Resource.smarthome,'lock_grey.svg')}" style="width:100px"/>
+                            </a>
+                        </div>    
+                    </div>	
+					<div class="slds-grid slds-grid--align-center" style="margin:20px 0">
+                        <div class="slds-col--padded">
+                            <a href="#" id="btnUnlockDoor">
+                                <img id="unlockDoorImg" src="{!URLFOR($Resource.smarthome,'unlocked_grey.svg')}" style="width:100px"/>
+                            </a>
+                        </div>    
+                    </div>	
+                    <button class="slds-button slds-button--neutral" onclick="closeTab(tabLock)">Done</button>
+                </div>
+                
+            </div>
+
+            <script src="/canvas/sdk/js/publisher.js"></script>
+            <script src="{!URLFOR($Resource.jquery)}"></script>
+            <script>
+			setTimeout(function() {
+                Sfdc.canvas.publisher.resize( { height : "470px" } );
+            });
+    
+            // No trailing / in the URLs
+            var LOCK_URL;
+            var THERMOSTAT_URL;
+            var LIGHTS_URL;
+            
+			/* ----------------------------------------- Tab Navigator Logic ----------------------------------------- */
+            
+            var tabMenu = document.getElementById("tabMenu");
+            var tabTemp = document.getElementById("tabTemp");
+            var tabLights = document.getElementById("tabLights");
+            var tabLocks = document.getElementById("tabLocks");
+            
+            document.getElementById("btnTemp").addEventListener("click", function(event) {
+                event.preventDefault();
+                tabMenu.className = "tab hidden";
+                tabTemp.className = "tab";
+            }, false);
+            
+            document.getElementById("btnLights").addEventListener("click", function(event) {
+                event.preventDefault();
+                tabMenu.className = "tab hidden";
+                tabLights.className = "tab";
+            }, false);
+            
+            document.getElementById("btnLock").addEventListener("click", function(event) {
+                event.preventDefault();
+                tabMenu.className = "tab hidden";
+                tabLock.className = "tab";
+            }, false);
+            
+            function closeTab(tab) {
+                tabMenu.className = "tab";
+                tab.className = "tab hidden";
+            };
+            
+            /* --------------------------------------------- Lock --------------------------------------------- */
+            
+            var lockDoorImg = document.getElementById("lockDoorImg");
+            var unlockDoorImg = document.getElementById("unlockDoorImg");
+            
+            function showLockState(state) {
+                if (state === "lock") {
+                    lockDoorImg.src = "{!URLFOR($Resource.smarthome,'lock_red.svg')}";
+                    unlockDoorImg.src = "{!URLFOR($Resource.smarthome,'unlocked_grey.svg')}";
+                } else {
+                    lockDoorImg.src = "{!URLFOR($Resource.smarthome,'lock_grey.svg')}";
+                    unlockDoorImg.src = "{!URLFOR($Resource.smarthome,'unlocked_green.svg')}";
+                }    
+            }
+            
+            // Getting the initial lock state
+            if (LOCK_URL) {
+                console.log("Getting lock state...");
+                $.ajax(LOCK_URL)
+                .done(function(data) {
+                    showLockState(data.state);
+                    console.log("Got lock state: " + data.state);
+                })
+                .fail(function(xhr, errorText, error) {
+                    console.log("Error getting lock state");
+                    console.log(error);
+                });
+            } else {
+                // demo mode without lock
+                showLockState("lock");
+			}
+            
+            function lockDoor(state) {
+                if (LOCK_URL) {
+                    $.ajax(LOCK_URL + "/" + state)
+                        .done(function() {
+                            console.log("Lock state successfully set to " + state);
+                            showLockState(state);
+                        })
+                        .fail(function(error) {
+                            console.log("Error setting lock state to " + state);
+                            console.log(error);
+                        });					
+                } else {
+                    // demo mode without actual lock
+                    showLockState(state);
+                }
+            }
+            
+			document.getElementById("btnLockDoor").addEventListener("click", function(event) {
+                event.preventDefault();
+                lockDoor("lock");
+            }, false);
+            
+            document.getElementById("btnUnlockDoor").addEventListener("click", function(event) {
+                event.preventDefault();
+                lockDoor("unlock");
+            }, false);
+
+            /* ------------------------------------------ Thermostat ------------------------------------------ */
+            
+			var actualTemp = document.getElementById("actualTemp");
+            var desiredTemp = document.getElementById("desiredTemp");
+            var tempSlider = document.getElementById("tempSlider");
+            
+            // Getting the initial thermostat state
+            if (THERMOSTAT_URL) {
+                console.log("Getting thermostat state...");
+                $.ajax(THERMOSTAT_URL + "/get")
+                .done(function(data) {
+                    var thermostat = data.thermostatList[0].runtime;
+                    var actualTemperature = thermostat.actualTemperature / 10;
+                    var desiredTemperature = thermostat.desiredHeat / 10;
+                    actualTemp.innerHTML = actualTemperature + "°";
+                    desiredTemp.innerHTML = desiredTemperature + "°";
+                    tempSlider.value = desiredTemperature;
+                    console.log("Actual temperature: " + actualTemperature);
+                    console.log("Desired heat: " + desiredTemperature);
+                })
+                .fail(function(xhr, errorText, error) {
+                    console.log("Error getting thermostat state");
+                    console.log(error);
+                });
+            }
+
+            tempSlider.addEventListener("input", function(event) {
+            	desiredTemp.innerHTML = event.target.value + "°";
+			});
+            
+            tempSlider.addEventListener("change", function(event) {
+                var temperature = event.target.value;
+                if (THERMOSTAT_URL) {
+                    $.ajax(THERMOSTAT_URL + "/set?temp=" + parseInt(temperature * 10))
+                        .done(function() {
+                            console.log("Temperature successfully set to " + temperature);
+                        })
+                        .fail(function(error) {
+                            console.log("Error setting temperature to " + temperature);
+                            console.log(error);
+                        });
+                }
+            });
+
+            /* -------------------------------------------- Lights -------------------------------------------- */
+            
+            var lightSliders = document.getElementById("lightSliders");
+            
+            // Send requested state for selected light to the Hue Bridge proxy (https://github.com/dreamhouseapp/dreamhouse-iot-lights)
+            function lightChange(event) {
+                if (LIGHTS_URL) {
+                	$.ajax({url: LIGHTS_URL + "/lights/" + event.target.dataset.id, method: "PUT", data: JSON.stringify({bri: event.target.value}), contentType: "application/json"});
+                }
+            }
+        
+            // Retrieve all lights registered with the Hue Bridge 
+            if (LIGHTS_URL) {
+                $.ajax(LIGHTS_URL + "/lights")
+                    .done(function(data) {
+                        var html="";
+                        // Display a slider for each light
+                        for (var property in data) {
+                            if (data.hasOwnProperty(property)) {
+                                html = html + "<div class='row'><div class='cell'>" + data[property].name + "</div><div class='cell'><input min='0' max='255' data-id='" + property + "' type='range' value='"+ data[property].state.bri + "' onchange='lightChange(event)'/></div></div>";
+                            }
+                        }
+                        lightSliders.innerHTML = html;
+                    })
+                    .fail(function(xhr, errorText, error) {
+                        console.log(error);
+                    });
+			} else {
+                // demo mode without lights
+                lightSliders.innerHTML =
+	                "<div class='row'><div class='cell'>Living Room</div><div class='cell'><input min='0' max='255' data-id='1' type='range' value='0' onchange='lightChange(event)'/></div></div>" +
+	                "<div class='row'><div class='cell'>Dining Room</div><div class='cell'><input min='0' max='255' data-id='2' type='range' value='0' onchange='lightChange(event)'/></div></div>" +
+	                "<div class='row'><div class='cell'>Kitchen</div><div class='cell'><input min='0' max='255' data-id='3' type='range' value='0' onchange='lightChange(event)'/></div></div>";
+            }                
+            </script>
+
+        </body>
+    </html>        
+    
+</apex:page>

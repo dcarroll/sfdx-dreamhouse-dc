@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+ <fields>
+  <fullName>Property__c</fullName>
+  <deleteConstraint>SetNull</deleteConstraint>
+  <externalId>false</externalId>
+  <label>Property</label>
+  <referenceTo>Property__c</referenceTo>
+  <relationshipLabel>Cases</relationshipLabel>
+  <relationshipName>Cases</relationshipName>
+  <required>false</required>
+  <trackFeedHistory>false</trackFeedHistory>
+  <trackHistory>false</trackHistory>
+  <trackTrending>false</trackTrending>
+  <type>Lookup</type>
+ </fields>
+</CustomObject>

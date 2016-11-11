@@ -1,0 +1,29 @@
+<aura:component >
+
+    <aura:attribute name="page" type="integer"/>
+    <aura:attribute name="pages" type="integer"/>
+    <aura:attribute name="total" type="integer"/>
+    
+    <aura:registerEvent name="propertyPageChange" type="c:PropertyPageChange"/>
+    
+    <div class="container">
+        <div class="left">
+            <aura:renderIf isTrue="{!v.page > 1}">
+                <button class="slds-button slds-button--icon-border" onclick="{!c.previousPage}">
+           	        <c:svg class="slds-button__icon" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#left" />
+            		<span class="slds-assistive-text">Previous Page</span>
+          		</button>
+            </aura:renderIf>
+        </div>
+        <div class="centered">{!v.total} properties • page {!v.page} / {!v.pages}</div>
+        <div class="right">
+            <aura:renderIf isTrue="{!v.page &lt; v.pages}">
+                <button class="slds-button slds-button--icon-border" onclick="{!c.nextPage}">
+           	        <c:svg class="slds-button__icon" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#right" />
+            		<span class="slds-assistive-text">Next Page</span>
+          		</button>
+            </aura:renderIf>
+        </div>
+	</div>
+    
+</aura:component>

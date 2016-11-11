@@ -1,0 +1,14 @@
+<aura:component implements="force:appHostable">
+    
+	<ltng:require styles="/resource/SLDS100/assets/styles/salesforce-lightning-design-system-ltng.css" />
+    
+    <div class="slds">
+        <c:PropertyListHeader />
+        <div class="content">
+            <c:PropertySearchBar />
+            <c:PropertyPriceSlider />
+            <c:PropertyList />
+        </div>
+    </div>
+    
+</aura:component>

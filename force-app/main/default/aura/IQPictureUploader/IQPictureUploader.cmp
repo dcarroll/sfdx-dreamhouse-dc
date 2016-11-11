@@ -1,0 +1,37 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId"
+                access="global">
+    
+    <aura:attribute name="recordId" type="Id"/>
+    <aura:attribute name="pictureURL" type="String"/>
+    <aura:attribute name="tags" type="Array"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+
+    <lightning:card footer="Powered by Einstein">
+		<aura:set attribute="title">
+            <lightning:icon iconName="utility:photo" size="small" />
+            IQ Picture Uploader
+        </aura:set>
+        <div class="drop-target" ondragover="{!c.onDragOver}" ondrop="{!c.onDrop}">
+            <div class="placeholder">
+                <lightning:icon iconName="utility:home" size="large" />
+    	        <div>Drag house picture here</div>
+            </div>
+            <div class="gallery">
+                <div class="img-wrapper">
+                    <img src="{!v.pictureURL}" onload="{!c.imgLoadedHandler}"/>
+                    <div aura:id="scanner" class="scanner"></div>
+                </div>    
+                <aura:iteration items="{!v.tags}" var="tag" indexVar="index">
+					<span class="slds-pill"><a href="javascript:void(0);" class="slds-pill__label">{!tag}</a>
+                    <button class="slds-button slds-button--icon slds-pill__remove" data-index="{!index}" onclick="{!c.removeTag}">
+						<c:svg class="slds-button__icon" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#close" />
+                        <span class="slds-assistive-text">Remove</span>
+                    </button>
+                    </span>
+                </aura:iteration>    
+            </div>
+        </div>
+    </lightning:card>
+    
+</aura:component>

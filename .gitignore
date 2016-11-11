@@ -1,0 +1,11 @@
+.DS_Store
+.appcloud
+.project
+.salesforce
+.settings
+node_modules
+.idea
+.tern-project
+
+selenium-client-jars/
+test/artifacts

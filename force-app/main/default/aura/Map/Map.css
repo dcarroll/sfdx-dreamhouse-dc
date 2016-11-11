@@ -1,0 +1,15 @@
+.THIS {
+    margin: -5rem 1rem 0 1rem;
+}
+
+.THIS > div {
+    width: 100%;
+    height: 400px;
+    margin-bottom: 4px;
+}
+
+.THIS h2 {
+    font-size: 1.125rem;
+    line-height: 1;
+    padding: 0rem 0rem 1rem 0rem;
+}

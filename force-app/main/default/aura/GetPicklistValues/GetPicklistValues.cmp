@@ -1,0 +1,8 @@
+<aura:component controller="GetPickListValuesController">
+	<aura:attribute name="sobject" type="String" />
+	<aura:attribute name="picklistfield" type="String" />
+	<aura:attribute name="values" type="String[]" />
+
+	<aura:handler name="init" value="{!this}" action="{!c.init}" />
+	
+</aura:component>

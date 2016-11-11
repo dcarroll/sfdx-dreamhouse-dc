@@ -1,0 +1,17 @@
+<aura:component >
+	
+	<aura:attribute name="property" type="Property__c"/>
+	<aura:registerEvent name="navigateToSObject" type="force:navigateToSObject"/>
+    
+	<a onclick="{!c.navigateToDetailsView}">
+    	<div style="{! 'background-image:url(' + v.property.Thumbnail__c + ')'}">
+        	<div>
+            	<h1>{!v.property.Title__c}</h1>
+            	<div>{!v.property.City__c}</div>
+            	<div>Beds: {!v.property.Beds__c}&nbsp;&nbsp;&nbsp;Baths: {!v.property.Baths__c}</div>
+            	<div class="price">${! v.property.Price__c}</div>
+        	</div>
+    	</div>
+	</a>    
+    
+</aura:component>

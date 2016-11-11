@@ -1,0 +1,17 @@
+<aura:component >
+
+    <aura:registerEvent name="propertySearchKeyChange" type="c:PropertySearchKeyChange"/>
+    
+    <div>
+        <div class="slds-form-element">
+            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
+                <input aura:id="searchKey" class="slds-input slds-input-has-icon slds-input-has-icon--left" type="text" aria-autocomplete="list" role="combobox" aria-expanded="true" aria-activedescendant="" 
+                       onkeyup="{!c.searchKeyChange}" 
+                       placeholder="Search properties"/>
+                <c:svg ariaHidden="true" class="slds-input__icon slds-icon-text-default" 
+                     xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"/>
+            </div>
+        </div>
+    </div>
+
+</aura:component>

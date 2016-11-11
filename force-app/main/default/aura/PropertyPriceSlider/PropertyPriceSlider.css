@@ -1,0 +1,24 @@
+.THIS {
+    margin-top: 44px;
+    margin-bottom: 28px;
+}
+
+.THIS .noUi-tooltip {
+    padding: 3px 4px;
+    font-size: .8rem;
+}
+
+.THIS .noUi-horizontal .noUi-handle-upper .noUi-tooltip {
+    top: -32px;
+    bottom: inherit;
+    right: 0;
+}
+
+.THIS>div {
+    margin: 0 auto;
+    width: 400px;
+}
+
+.THIS .noUi-connect {
+    background: #16325C;
+}

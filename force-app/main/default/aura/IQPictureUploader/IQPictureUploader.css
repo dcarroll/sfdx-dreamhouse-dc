@@ -1,0 +1,75 @@
+.THIS {
+    background-color: #FFFFFF;
+    /*min-height: 450px;*/
+}
+
+.THIS .slds-card__header {
+    padding-left: 1rem;
+    padding-top: 28px;
+}
+
+.THIS .slds-card__body {
+	padding: 12px;
+}
+
+.THIS .drop-target {
+    width: 100%;
+    min-height: 250px;
+    text-align: center;
+    position: relative;
+}
+
+.THIS .placeholder {
+    padding-top: 50px;
+    position: absolute;
+	text-align: center;
+    color: rgb(216, 221, 230);
+    width: 100%;
+    font-size:14px;
+    font-weight: 300;
+}
+
+.THIS .placeholder svg {
+	fill: rgb(216, 221, 230);
+}
+
+.THIS .placeholder>img {
+    position:absolute;
+	margin-bottom: 4px;    
+}
+
+.THIS .gallery>img {
+    position:absolute;
+    width:100%;
+    margin-bottom: 4px;
+}
+
+.THIS .img-wrapper {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.THIS .scanner {
+    position: absolute;
+	top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: .5;
+    background-color: #FF0000;
+    z-index: 10;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+    transition: all 2s ease-in-out;
+}
+
+.THIS .slds-pill {
+    padding: 6px 4px 4px 4px;
+    border-radius: 2px;
+}
+
+.THIS .scanner.on {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(110%, 0, 0);
+}
