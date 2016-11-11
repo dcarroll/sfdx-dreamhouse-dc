@@ -1,0 +1,72 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId"
+                access="global">
+
+	<!--
+		A component that displays the top leads for a property. 
+		The Lead scoring service is stubbed in this version of the component. 
+	-->
+
+    <aura:attribute name="recordId" type="String" />
+	<aura:attribute name="property" type="Property__c" /> 
+    <aura:attribute name="leads" type="Object[]"/>
+    <aura:attribute name="waiting" type="Boolean" default="false"/>
+    
+    <aura:handler event="ltng:selectSObject" action="{!c.onRecordSelect}"/>
+    <aura:handler event="c:PropertyPriceChange" action="{!c.onPriceChange}"/>
+
+    <lightning:card footer="Powered by Einstein">
+   		<aura:set attribute="title">
+            <lightning:icon iconName="standard:solution"/>
+            Top Leads
+        </aura:set>            
+        <aura:if isTrue="{!v.recordId==undefined}">
+            <div aura:id="selectSection" class="select">
+                Select a property
+            </div>
+        </aura:if>
+        <aura:if isTrue="{!v.recordId!=undefined}">
+            <table class="slds-table slds-table--bordered slds-table--cell-buffer">
+                <thead>
+                    <tr class="slds-text-heading--label">
+                        <th scope="col">
+                            <div class="slds-truncate">Name</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate">Address</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate">Phone</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate">Score</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <aura:iteration items="{!v.leads}" var="lead" indexVar="index">
+                        <tr>
+                            <td data-label="Name">
+                                <div class="slds-truncate">{!lead.name}</div>
+                            </td>
+                            <td data-label="Address">
+                                <div class="slds-truncate">{!lead.address}</div>
+                            </td>
+                            <td data-label="City">
+                                <div class="slds-truncate">{!lead.phone}</div>
+                            </td>
+                            <td data-label="Phone">
+                                <div class="slds-truncate">{!lead.score}</div>
+                            </td>
+                        </tr>
+                    </aura:iteration>                        
+                </tbody>
+            </table>
+        </aura:if>
+        
+        <aura:if isTrue="{! v.waiting }">
+	        <lightning:spinner size="large"/>
+        </aura:if>    
+
+    </lightning:card>
+	
+</aura:component>

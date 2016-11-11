@@ -1,0 +1,55 @@
+.THIS .slider {
+    display: flex;
+}
+
+.THIS .slider .price {
+    width: 90px;
+    text-align: right;
+    color: #53688C;
+}
+
+.THIS .range-label {
+    display: block;
+    margin: 4px 0 0 0;
+}
+
+.THIS input[type=range]{
+    -webkit-appearance: none;
+    width:100%;
+}
+
+.THIS .slds-card__body {
+    text-align: left;
+    padding: 20px 20px 24px 20px;
+    background-color: #FFFFFF;
+}
+
+.THIS input[type=range] {
+    height: 24px;
+	flex: 1;
+}
+
+.THIS input[type=range]::-webkit-slider-runnable-track {
+    height: 2px;
+    background: #53688C;
+    border: none;
+    border-radius: 3px;
+}
+
+.THIS input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 20px;
+    width: 14px;
+    border-radius: 2px;
+    background: #53688C;
+    margin-top: -10px;
+}
+
+.THIS input[type=range]:focus {
+    outline: none;
+}
+
+.THIS input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #53688C;
+}

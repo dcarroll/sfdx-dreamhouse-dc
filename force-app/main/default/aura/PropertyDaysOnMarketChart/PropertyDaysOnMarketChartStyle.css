@@ -1,0 +1,49 @@
+.THIS .slds-card__body {
+    padding: 0 20px;
+}
+
+.THIS {
+    height: 132px;
+}
+
+.THIS .slds-card__body {
+    text-align: left;
+}
+
+.THIS .bar-wrapper {
+    overflow: hidden;
+}
+
+.THIS .bar {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    height: 48px;
+    width: 0;
+    background-color: green;
+    opacity: .8;
+    transition: all .5s ease-in-out;
+}
+
+.THIS .legend {
+    margin-top: 4px;
+    margin-bottom: 2px;
+    display: flex;
+}
+
+.THIS .legend > div {
+    height: 4px;
+    opacity: .8;
+	flex: 1;
+}
+
+.THIS .legend .ok {
+	background-color: green;
+}
+
+.THIS .legend .warning {
+	background-color: orange;
+}
+
+.THIS .legend .alert {
+	background-color: red;
+}

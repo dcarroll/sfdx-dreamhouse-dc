@@ -1,0 +1,38 @@
+<aura:component implements="flexipage:availableForAllPageTypes"
+                access="global">
+    
+    <aura:attribute name="searchKey" type="String" default=""/>
+    <aura:attribute name="minPrice" type="Integer" default="0"/>
+    <aura:attribute name="maxPrice" type="Integer" default="1500000"/>
+    
+    <aura:registerEvent name="propertyFilterChange" type="c:PropertyFilterChange"/>
+
+    <aura:handler name="change" value="{!v.searchKey}" action="{!c.searchKeyChange}"/>
+
+    <lightning:card iconName="utility:filter" title="Property Filters">
+        
+        <aura:set attribute="actions">
+            <lightning:button label="Reset" onclick="{!c.reset}"/>
+        </aura:set>            
+
+        <lightning:input label="Search" type="text" value="{!v.searchKey}"/>
+            
+        <div class="row">
+            <p class="range-label slds-form-element__label">Price Min</p>
+            <div class="slider">
+                <input type="range" min='0' max='1500000' step="50000" value="{!v.minPrice}" onchange="{!c.minPriceChange}" oninput="{!c.minPriceInput}"/>
+                <span class="price"><lightning:formattedNumber value="{!v.minPrice}" style="currency" maximumFractionDigits="0" currencyCode="USD"/></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <p class="range-label slds-form-element__label">Price Max</p>
+            <div class="slider">
+                <input type="range" min='0' max='1500000' step="50000" value="{!v.maxPrice}" onchange="{!c.maxPriceChange}" oninput="{!c.maxPriceInput}"/>
+                <span class="price"><lightning:formattedNumber value="{!v.maxPrice}" style="currency" maximumFractionDigits="0" currencyCode="USD"/></span>
+            </div>
+        </div>
+
+    </lightning:card>
+    
+</aura:component>

@@ -1,0 +1,40 @@
+.THIS {
+    background-color: #FFFFFF;
+    box-sizing: border-box;
+}
+
+.THIS .slds-card__body {
+    padding: 0 24px 16px 24px;
+}
+
+.THIS .bar {
+    box-sizing: border-box;
+    display: inline-block;
+    height: 16px;
+    opacity: .6;
+}
+
+.THIS table {
+    box-sizing: border-box;
+}
+
+.THIS tr {
+    box-sizing: border-box;
+    border-bottom: solid 1px #EEEEEE;
+}
+
+.THIS .col-address {
+	width: 180px;
+}
+
+.THIS .col-days {
+	width: 60px;
+    text-align: right;
+    padding-right: 8px;
+}
+
+.THIS .col-date {
+	width: 80px;
+    text-align: right;
+    padding-right: 6px;
+}

@@ -1,23 +1,13 @@
-<aura:component controller="PropertyController" 
-                implements="force:hasRecordId,flexipage:availableForAllPageTypes"
+<aura:component implements="flexipage:availableForAllPageTypes"
                 access="global">
 
-    <aura:attribute name="recordId" type="Id" />
-
-    <aura:attribute name="map" type="Object"/>
-    <aura:attribute name="property" type="Property__c"/>
-    <aura:attribute name="markers" type="Object"/>
-    
-    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
-    
-    <ltng:require styles="/resource/leaflet/leaflet.css" 
-                  scripts="/resource/leaflet/leaflet.js"
+    <ltng:require styles="/resource/leaflet1/leaflet.css" 
+                  scripts="/resource/leaflet1/leaflet.js"
              	  afterScriptsLoaded="{!c.jsLoaded}" />
 
-    <div>
-    	<h2>Location</h2>
-	    <div aura:id="map"></div>
-    	<a href="">Open in Google Maps</a>
-    </div>
+    <aura:attribute name="location" type="SObject"/>
+    <aura:attribute name="jsLoaded" type="boolean" default="false"/>
+
+    <div aura:id="map"></div>
     
 </aura:component>

@@ -1,0 +1,46 @@
+.THIS {
+    position: relative;
+}
+
+.THIS .drop-target {
+    width: 100%;
+    min-height: 250px;
+    text-align: center;
+    position: relative;
+}
+
+.THIS .placeholder {
+    padding-top: 80px;
+    position: absolute;
+	text-align: center;
+    color: rgb(216, 221, 230);
+    width: 100%;
+    font-size:14px;
+    font-weight: 300;
+}
+
+.THIS .placeholder svg {
+	fill: rgb(216, 221, 230);
+}
+
+.THIS .placeholder>img {
+    position:absolute;
+	margin-bottom: 4px;    
+}
+
+.THIS .gallery>img {
+    position:absolute;
+    height:100%;
+    margin-bottom: 4px;
+}
+
+.THIS .img-wrapper {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.THIS .slds-pill {
+    padding: 4px 6px;
+    border-radius: 2px;
+}

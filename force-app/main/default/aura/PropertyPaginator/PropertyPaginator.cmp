@@ -8,21 +8,15 @@
     
     <div class="container">
         <div class="left">
-            <aura:renderIf isTrue="{!v.page > 1}">
-                <button class="slds-button slds-button--icon-border" onclick="{!c.previousPage}">
-           	        <c:svg class="slds-button__icon" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#left" />
-            		<span class="slds-assistive-text">Previous Page</span>
-          		</button>
-            </aura:renderIf>
+            <aura:if isTrue="{!v.page > 1}">
+                <lightning:buttonIcon iconName="utility:left" variant="border-filled" onclick="{!c.previousPage}"/>
+            </aura:if>
         </div>
         <div class="centered">{!v.total} properties • page {!v.page} / {!v.pages}</div>
         <div class="right">
-            <aura:renderIf isTrue="{!v.page &lt; v.pages}">
-                <button class="slds-button slds-button--icon-border" onclick="{!c.nextPage}">
-           	        <c:svg class="slds-button__icon" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#right" />
-            		<span class="slds-assistive-text">Next Page</span>
-          		</button>
-            </aura:renderIf>
+            <aura:if isTrue="{!v.page &lt; v.pages}">
+                <lightning:buttonIcon iconName="utility:right" variant="border-filled" onclick="{!c.nextPage}"/>
+            </aura:if>
         </div>
 	</div>
     

@@ -1,0 +1,21 @@
+.THIS {
+    position: relative;
+    background-color: #FFFFFF;
+}
+
+.THIS .slds-card__body {
+	height: 220px;
+}
+
+.THIS .slds-icon-standard-solution {
+    background-color: transparent;
+}
+
+.THIS .slds-icon-standard-solution svg {
+    fill: #54698D;
+}
+
+.THIS .select {
+    color: #BBBAB9;
+    padding-top: 80px;
+}

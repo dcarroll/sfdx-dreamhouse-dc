@@ -218,15 +218,27 @@
         <label>Status</label>
         <picklist>
             <picklistValues>
+                <fullName>Contracted</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pre Market</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
                 <fullName>Available</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Under agreement</fullName>
+                <fullName>Under Agreement</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Sold</fullName>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Off Market</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>

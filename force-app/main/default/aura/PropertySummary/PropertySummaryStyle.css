@@ -1,0 +1,41 @@
+.THIS .slds-card__body {
+    padding: 0 16px 16px 12px;
+    display: flex;
+    height: 116px;
+}
+
+.THIS .slds-card__body > div {
+ 	flex: 1;
+    padding-left: 16px;
+    padding-top: 8px;
+}
+
+.THIS .slds-card__body .summary {
+	text-align: left;
+}
+
+.THIS img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: none;
+}
+
+.THIS .slds-icon-standard-household {
+    background-color: transparent;
+}
+
+.THIS .slds-icon-standard-household svg {
+    fill: #54698D;
+}
+
+.THIS h3 {
+    font-size: 18px;
+    color: #0070D2;
+    font-weight: 300;
+}
+
+.THIS .select {
+    color: #BBBAB9;
+    margin-top: 20px;
+}

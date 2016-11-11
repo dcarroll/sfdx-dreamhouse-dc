@@ -1,0 +1,34 @@
+<aura:component implements="force:hasRecordId,flexipage:availableForAllPageTypes" access="global">
+    
+    <aura:attribute name="recordId" type="Id" />
+	<aura:attribute name="property" type="Property__c" /> 
+	<aura:attribute name="daysOnMarket" type="Integer" /> 
+	<aura:attribute name="formattedDateListed" type="String" /> 
+	<aura:attribute name="color" type="String" /> 
+    
+	<force:recordPreview aura:id="service" recordId="{!v.recordId}" targetRecord="{!v.property}" fields="['Id', 'Date_Listed__c']" 
+                         recordUpdated="{!c.recordUpdated}"/>
+    
+    <aura:handler event="ltng:selectSObject" action="{!c.recordChangeHandler}"/>
+
+    <lightning:card >
+        
+        <aura:set attribute="title">
+            <span class="title">{!v.daysOnMarket} days on the market</span>
+        </aura:set>
+		
+        <div class="bar-wrapper">
+	        <div class="bar" style="{! 'width:' + v.daysOnMarket / 90 * 100 + '%;background-color:' + v.color }"/>
+        </div>
+        
+        <div class="legend">
+            <div class="ok"></div>
+            <div class="warning"></div>
+            <div class="alert"></div>
+        </div>
+        
+		{!v.formattedDateListed}
+
+    </lightning:card>
+    
+</aura:component>

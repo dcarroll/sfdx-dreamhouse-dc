@@ -1,0 +1,62 @@
+<aura:component implements="force:hasRecordId,flexipage:availableForAllPageTypes"
+                access="global">
+
+	<!-- 
+		A component used to predict the number of days a property will stay on the market based on the asking price.
+		The prediction service is stubbed in this version of the component.
+	-->
+
+    <ltng:require scripts="/resource/countup7"/> 
+
+    <aura:attribute name="recordId" type="Id"/>
+    <aura:attribute name="property" type="Property__c"/>
+    <aura:attribute name="price" type="Long"/>
+    <aura:attribute name="formattedPrice" type="String"/>
+    <aura:attribute name="newPrice" type="Long"/>
+    <aura:attribute name="days" type="Integer" default="0"/>
+    <aura:attribute name="color" type="String" default="green"/>
+    <aura:attribute name="waiting" type="Boolean" default="false"/>
+   
+    <force:recordPreview aura:id="propertyService" 
+                         recordId="{!v.recordId}" 
+                         targetRecord="{!v.property}" 
+                         fields="['Id', 'Price__c', 'Assessed_Value__c', 'Address__c', 'City__c', 'Date_Listed__c']"
+                         mode="EDIT"
+                         recordUpdated="{!c.onRecordUpdated}"/>
+    
+    <aura:handler event="ltng:selectSObject" action="{!c.onRecordSelected}"/>
+
+    <lightning:card footer="Powered by Einstein">
+		<aura:set attribute="title">
+            <lightning:icon iconName="standard:solution"/>
+            Days on Market Estimator
+        </aura:set>
+        <aura:set attribute="actions">
+			<lightning:button label="Save as New Price" onclick="{!c.onSavePriceBtnClicked}"/>
+        </aura:set>            
+
+        <div aura:id="selectPanel" class="select">
+            Select a property
+        </div>
+        <div aura:id="dataPanel" class="hidden">
+        		<div class="summary">
+	            {!v.property.Address__c},&nbsp;{!v.property.City__c} ・ Current Price: <lightning:formattedNumber value="{!v.property.Price__c}" style="currency" maximumFractionDigits="0" currencyCode="USD"/>
+        		</div>
+            <div class="container">
+                <div class="left">
+                    <h1>{!v.formattedPrice}</h1>
+                    <input class="slider" min='{!v.property.Price__c * 0.7}' max='{!v.property.Price__c * 1.3}' type='range' value='{!v.property.Price__c}' 
+                           step="1000" onchange='{!c.onPriceChange}' oninput='{!c.onPriceInput}'/>
+                </div>
+                <div class="right">
+                    <h1><span aura:id="days"></span> days</h1>
+                    <div aura:id="bar" style="{! 'width:' + v.days / 90 * 100 + '%;background-color:' + v.color }" class="bar"/>
+                </div>
+            </div>
+        </div>    
+        <aura:if isTrue="{! v.waiting }">
+	        <lightning:spinner size="large"/>
+        </aura:if>    
+    </lightning:card>
+    
+</aura:component>

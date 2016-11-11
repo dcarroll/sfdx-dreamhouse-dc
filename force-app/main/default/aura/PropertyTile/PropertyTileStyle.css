@@ -1,0 +1,49 @@
+.THIS > div {
+    position:relative;
+    display: inline-block;
+    margin: .2rem;
+    border: solid 1px #dddddd;
+    border-radius: .2rem;
+    padding: 1rem;
+    width: 200px;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.THIS .lower-third {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: #FFFFFF;
+    background-color: rgba(0, 0, 0, .4);
+    padding: 4px 6px;
+}
+
+.THIS .lower-third > div {
+	font-weight: 300;
+	padding: 0;
+    margin: 0;
+}
+
+.THIS h1 {
+    font-size: 17px !important;
+	font-weight: 300;
+    padding: 0;
+    margin: 0;
+}
+
+.THIS .open-button {
+    position: absolute;
+    bottom: 6px;
+    right: 4px;
+}
+
+.THIS .truncate {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

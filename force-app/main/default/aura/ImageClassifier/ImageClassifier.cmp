@@ -1,0 +1,36 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId"
+                access="global">
+    
+    <!--
+		Image classifier. Vision service is stibbed in this version of the app
+	-->
+    
+    <aura:attribute name="recordId" type="Id"/>
+    <aura:attribute name="pictureURL" type="String"/>
+    <aura:attribute name="tags" type="Array"/>
+    <aura:attribute name="waiting" type="Boolean" default="false"/>
+    
+    <lightning:card iconName="utility:photo" title="Image Classifier" footer="Powered by Einstein">
+        <div class="drop-target" ondragover="{!c.onDragOver}" ondrop="{!c.onDrop}">
+            <div class="placeholder">
+                <lightning:icon iconName="utility:image" size="large" />
+    	        <div>Drag house picture here</div>
+            </div>
+            <div class="gallery">
+                <div class="img-wrapper">
+                    <img src="{!v.pictureURL}" onload="{!c.onImageLoad}"/>
+                </div>    
+                <aura:iteration items="{!v.tags}" var="tag" indexVar="index">
+					<span class="slds-pill">
+                        <a href="javascript:void(0);" class="slds-pill__label">{!tag}</a>
+                        <lightning:buttonIcon name="{!index}" iconName="utility:close" variant="bare" onclick="{!c.onRemoveTagBtnClick}"/>
+                    </span>
+                </aura:iteration>    
+            </div>
+        </div>
+        <aura:if isTrue="{! v.waiting }">
+	        <lightning:spinner size="large"/>
+        </aura:if>    
+    </lightning:card>
+    
+</aura:component>

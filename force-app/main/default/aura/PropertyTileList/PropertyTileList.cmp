@@ -1,0 +1,28 @@
+<aura:component controller="PropertyController"
+                implements="flexipage:availableForAllPageTypes">
+	
+    <aura:attribute name="properties" type="Property__c[]"/>
+    <aura:attribute name="pageSize" type="integer" default="6"/>
+    <aura:attribute name="page" type="integer"/>
+    <aura:attribute name="pages" type="integer"/>
+    <aura:attribute name="total" type="integer"/>
+    <aura:attribute name="tileSize" type="integer" default="200"/>
+
+    <aura:attribute name="searchKey" type="String" default=""/>
+    <aura:attribute name="minPrice" type="integer" default="0"/>
+    <aura:attribute name="maxPrice" type="integer" default="10000000"/>
+    
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler event="c:PropertyPageChange" action="{!c.pageChange}"/>
+    <aura:handler event="c:PropertyFilterChange" action="{!c.filterChange}"/>
+
+    <lightning:layout horizontalAlign="center" multipleRows="true">
+        <aura:iteration items="{!v.properties}" var="property">
+            <lightning:layoutItem >
+                <c:PropertyTile property="{!property}" tileSize="{!v.tileSize}"/>
+            </lightning:layoutItem>    
+        </aura:iteration>
+	</lightning:layout>
+	<c:PropertyPaginator page="{!v.page}" pages="{!v.pages}" total="{!v.total}"/>
+    
+</aura:component>

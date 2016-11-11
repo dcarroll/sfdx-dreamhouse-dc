@@ -1,0 +1,3 @@
+<design:component label="Picture Gallery 3">
+	<design:attribute name="animations" label="Animations" description="Animated transitions" />
+</design:component>
