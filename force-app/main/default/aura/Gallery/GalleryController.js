@@ -5,6 +5,7 @@
 
     onDragOver: function(component, event) {
         event.preventDefault();
+        // Little comment
     },
 
     onDrop: function(component, event) {
