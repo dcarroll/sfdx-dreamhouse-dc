@@ -15,7 +15,7 @@
                          fields="['Id', 'Status__c']"
 						 recordUpdated="{!c.recordUpdated}"
                          mode="EDIT" />
-    
+    <!-- Comment to test pipeline -->
     <c:Process steps="{!v.steps}" currentStep="{!v.property.Status__c}" extraStep="Off Market"
                stepChange="{!c.onStepChange}"/>
     
